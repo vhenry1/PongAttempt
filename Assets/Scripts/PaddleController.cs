@@ -1,26 +1,49 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public abstract class PaddleController : MonoBehaviour, ICollidable
+public abstract class PaddleController : NetworkBehaviour, ICollidable
 {
     [SerializeField] protected float speed = 8f;
     protected Rigidbody2D rb;
 
     private SpriteRenderer sr;
     private Color originalColor;
+    public NetworkVariable<float> NetworkedYPosition = new NetworkVariable<float>(
+        0f,
+        NetworkVariableReadPermission.Everyone, 
+        NetworkVariableWritePermission.Owner
+    );
 
     void Start()
-    {
+    { 
         rb = GetComponent<Rigidbody2D>();
 
         sr = GetComponent<SpriteRenderer>();
         if (sr != null) originalColor = sr.color;
     }
+    public override void OnNetworkSpawn()
+{
+    if (IsOwner)
+    {
+        float xPosition = (OwnerClientId == 0) ? -7f : 7f;
+        transform.position = new Vector3(xPosition, 0, 0);
+    }
+}
 
     
-    void FixedUpdate()
+    void Update()
     {
-        float input = GetMovementInput();
-        rb.linearVelocity = new Vector2(0f, input * speed);
+        if (IsOwner)
+        {
+            float input = GetMovementInput();
+            rb.linearVelocity = new Vector2(0f, input * speed);
+            NetworkedYPosition.Value = transform.position.y;
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, NetworkedYPosition.Value, transform.position.z);
+        }
+        
     }
 
    protected abstract float GetMovementInput();
