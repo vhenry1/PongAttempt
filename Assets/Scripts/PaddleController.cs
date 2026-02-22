@@ -33,17 +33,34 @@ public abstract class PaddleController : NetworkBehaviour, ICollidable
     
     void Update()
     {
-        if (IsOwner)
+        if (HasLocalControl())
         {
             float input = GetMovementInput();
             rb.linearVelocity = new Vector2(0f, input * speed);
-            NetworkedYPosition.Value = transform.position.y;
+            // Only write the NetworkVariable if Netcode is active and this NetworkObject is spawned.
+            if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening)
+            {
+                if (NetworkObject != null && NetworkObject.IsSpawned)
+                {
+                    NetworkedYPosition.Value = transform.position.y;
+                }
+            }
         }
         else
         {
             transform.position = new Vector3(transform.position.x, NetworkedYPosition.Value, transform.position.z);
         }
         
+    }
+
+    protected bool HasLocalControl()
+    {
+        // If Netcode isn't running, allow local control for single-player/testing.
+        if (NetworkManager.Singleton == null) return true;
+        // If Netcode is running but not listening (not started), allow local control.
+        if (!NetworkManager.Singleton.IsListening) return true;
+        // Otherwise require ownership.
+        return IsOwner;
     }
 
    protected abstract float GetMovementInput();

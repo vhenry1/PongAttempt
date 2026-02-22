@@ -9,6 +9,9 @@ TagManager:
   - Paddle
   - New tag (1)
   - Ball
+  - LeftScoreZone
+  - RightScoreZone
+  - StartButton
   layers:
   - Default
   - TransparentFX
