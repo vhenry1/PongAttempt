@@ -128,8 +128,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88704166}
-  - component: {fileID: 88704165}
   - component: {fileID: 88704164}
+  - component: {fileID: 88704165}
+  - component: {fileID: 88704167}
   m_Layer: 0
   m_Name: NetworkPaddleController
   m_TagString: Untagged
@@ -195,6 +196,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &88704167
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88704163}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &173275774
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +239,7 @@ GameObject:
   - component: {fileID: 173275780}
   m_Layer: 0
   m_Name: LeftScore
-  m_TagString: RightScoreZone
+  m_TagString: LeftScoreZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +381,7 @@ Transform:
   m_GameObject: {fileID: 173275774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -70.018, y: 0.1199, z: 0}
+  m_LocalPosition: {x: -7.652201, y: 0.1199, z: 0}
   m_LocalScale: {x: 0.2704519, y: 8.780288, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -554,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 228372708}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.29, y: 0, z: 0}
+  m_LocalPosition: {x: 7.16, y: 0, z: 0}
   m_LocalScale: {x: 0.74, y: 11.39, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -633,7 +661,7 @@ Transform:
   m_GameObject: {fileID: 283160609}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.45000076, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -813,7 +841,7 @@ Transform:
   m_GameObject: {fileID: 353806496}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -69.3, y: 0, z: 0}
+  m_LocalPosition: {x: -6.8500023, y: 0, z: 0}
   m_LocalScale: {x: 0.74, y: 2.1641, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -835,15 +863,15 @@ MonoBehaviour:
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
-  AlwaysReplicateAsRoot: 0
+  AlwaysReplicateAsRoot: 1
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 1
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
+  DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
+  AllowOwnerToParent: 1
 --- !u!1 &436536466
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 259.80002, y: 156.20001}
+  m_AnchoredPosition: {x: 30, y: 117}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &436536468
@@ -1154,7 +1182,7 @@ Transform:
   m_GameObject: {fileID: 445245660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -56.55, y: 0, z: 0}
+  m_LocalPosition: {x: 5.9000015, y: 0, z: 0}
   m_LocalScale: {x: 0.74, y: 2.1641, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1176,15 +1204,15 @@ MonoBehaviour:
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
-  AlwaysReplicateAsRoot: 0
+  AlwaysReplicateAsRoot: 1
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 1
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
+  DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
+  AllowOwnerToParent: 1
 --- !u!1 &474859630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,7 +1229,7 @@ GameObject:
   - component: {fileID: 474859636}
   m_Layer: 0
   m_Name: RightScore
-  m_TagString: LeftScoreZone
+  m_TagString: RightScoreZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1343,7 +1371,7 @@ Transform:
   m_GameObject: {fileID: 474859630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.8458, y: 0.1519, z: 0}
+  m_LocalPosition: {x: 6.519999, y: 0.1519, z: 0}
   m_LocalScale: {x: 0.3183418, y: 8.812663, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1519,7 +1547,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -63, y: 0, z: -20}
+  m_LocalPosition: {x: -0.5500008, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1681,7 +1709,7 @@ Transform:
   m_GameObject: {fileID: 537685275}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -70.61, y: 0, z: 0}
+  m_LocalPosition: {x: -8.16, y: 0, z: 0}
   m_LocalScale: {x: 0.74, y: 11.39, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1765,7 +1793,7 @@ Transform:
   m_GameObject: {fileID: 619394800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -73.51, y: 0, z: 0}
+  m_LocalPosition: {x: -11.060001, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1967,8 +1995,8 @@ GameObject:
   - component: {fileID: 1373162308}
   - component: {fileID: 1373162307}
   - component: {fileID: 1373162306}
-  - component: {fileID: 1373162305}
   - component: {fileID: 1373162310}
+  - component: {fileID: 1373162305}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -2117,7 +2145,7 @@ Transform:
   m_GameObject: {fileID: 1373162304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -63, y: 0, z: 0}
+  m_LocalPosition: {x: -0.54999924, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2304,7 +2332,7 @@ Transform:
   m_GameObject: {fileID: 1387061361}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70629996, w: 0.70791274}
-  m_LocalPosition: {x: -63.72, y: 4.95, z: 0}
+  m_LocalPosition: {x: -0.8199997, y: 4.95, z: 0}
   m_LocalScale: {x: 0.74, y: 24.716301, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2732,7 +2760,7 @@ Transform:
   m_GameObject: {fileID: 1989092350}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70629996, w: 0.70791274}
-  m_LocalPosition: {x: -63.7, y: -4.71, z: 0}
+  m_LocalPosition: {x: -0.79999924, y: -4.71, z: 0}
   m_LocalScale: {x: 0.74, y: 24.716301, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
