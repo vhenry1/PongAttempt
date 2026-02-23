@@ -12,6 +12,7 @@ TagManager:
   - LeftScoreZone
   - RightScoreZone
   - StartButton
+  - gameManager
   layers:
   - Default
   - TransparentFX

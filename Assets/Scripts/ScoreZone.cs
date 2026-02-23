@@ -1,41 +1,34 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class Score : NetworkBehaviour
+public class ScoreZone : NetworkBehaviour
 {
-  void OnTriggerEnter2D(Collider2D other)
-  {
-    
-    if (!other.CompareTag("Ball")) {
-      Debug.Log("[ScoreZone] Ignored: entering object is not tagged 'Ball'.");
-      return;
-    }
-    var ball = Object.FindFirstObjectByType<BallMovement>();
+    public enum ZoneType { LeftZone, RightZone }
+    [SerializeField] private ZoneType zoneType;
 
-    GameManager manager = Object.FindFirstObjectByType<GameManager>();
-    if (manager == null)
+    private GameManager gameManager;
+
+    void Start()
     {
-      Debug.LogError("[ScoreZone] GameManager not found when scoring.");
-      return;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    if (this.CompareTag("RightScoreZone"))
+    void OnTriggerEnter2D(Collider2D other)
     {
-      Debug.Log("[ScoreZone] Scoring for RIGHT zone");
-      manager.CompleteRightScore();
-      ball.ResetBall();
-      ball.StartBall();
+        if (!IsServer) return;
+        if (!other.CompareTag("Ball")) return;
+
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager not found in scene!");
+            return;
+        }
+
+        if (gameManager.GameOver) return;
+
+        if (zoneType == ZoneType.LeftZone)
+            gameManager.ScoreRightPoint();
+        else
+            gameManager.ScoreLeftPoint();
     }
-    else if (this.CompareTag("LeftScoreZone"))
-    {
-      Debug.Log("[ScoreZone] Scoring for LEFT zone");
-      manager.CompleteLeftScore();
-      ball.ResetBall();
-      ball.StartBall();
-    }
-    else
-    {
-      Debug.LogWarning($"[ScoreZone] This trigger's tag is not 'RightScoreZone' or 'LeftScoreZone': {this.tag}");
-    }
-  }
 }

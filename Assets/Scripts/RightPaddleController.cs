@@ -1,12 +1,11 @@
 using UnityEngine;
-using Unity.Netcode; // Required for IsOwner
+using Unity.Netcode;
 
 public class RightPaddle : PaddleController
 {
     protected override float GetMovementInput()
     {
-        // Only return input if this local player owns this paddle
-        if (base.HasLocalControl())
+        if (IsOwner)
         {
             return Input.GetAxis("RightPaddle");
         }
