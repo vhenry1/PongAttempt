@@ -8,7 +8,7 @@ public class StartGameUI : MonoBehaviour
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
 
         if (startButtonRoot == null)
             startButtonRoot = gameObject;

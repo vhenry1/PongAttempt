@@ -5,7 +5,7 @@ public class NetworkPaddleController : NetworkBehaviour
 {
     [SerializeField] private float speed = 8f;
     [SerializeField] private float leftX = -7f;
-    [SerializeField] private float rightX = 7f;
+    [SerializeField] private float rightX = 8f;
     [SerializeField] private float minY = -4f;
     [SerializeField] private float maxY = 4f;
 
